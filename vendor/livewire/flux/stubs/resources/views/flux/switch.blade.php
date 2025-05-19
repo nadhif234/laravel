@@ -1,16 +1,9 @@
 @props([
-    'name' => null,
+    'name' => $attributes->whereStartsWith('wire:model')->first(),
     'align' => 'right',
 ])
 
 @php
-// We only want to show the name attribute it has been set manually
-// but not if it has been set from the `wire:model` attribute...
-$showName = isset($name);
-if (! isset($name)) {
-    $name = $attributes->whereStartsWith('wire:model')->first();
-}
-
 $classes = Flux::classes()
     ->add('group h-5 w-8 min-w-8 relative inline-flex items-center outline-offset-2')
     ->add('rounded-full')
@@ -36,13 +29,13 @@ $indicatorClasses = Flux::classes()
 
 @if ($align === 'left' || $align === 'start')
     <flux:with-inline-field :$attributes>
-        <ui-switch {{ $attributes->class($classes) }} @if($showName) name="{{ $name }}" @endif data-flux-control data-flux-switch>
+        <ui-switch {{ $attributes->class($classes) }} data-flux-control data-flux-switch>
             <span class="{{ \Illuminate\Support\Arr::toCssClasses($indicatorClasses) }}"></span>
         </ui-switch>
     </flux:with-inline-field>
 @else
     <flux:with-reversed-inline-field :$attributes>
-        <ui-switch {{ $attributes->class($classes) }} @if($showName) name="{{ $name }}" @endif data-flux-control data-flux-switch>
+        <ui-switch {{ $attributes->class($classes) }} data-flux-control data-flux-switch>
             <span class="{{ \Illuminate\Support\Arr::toCssClasses($indicatorClasses) }}"></span>
         </ui-switch>
     </flux:with-reversed-inline-field>

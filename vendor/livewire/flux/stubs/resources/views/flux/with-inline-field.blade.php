@@ -12,15 +12,15 @@ extract(flux::forwardedattributes($attributes, [
     'label' => null,
 ])
 
-<?php if (isset($label) || isset($description)): ?>
+<?php if ($label || $description): ?>
     <flux:field variant="inline">
         {{ $slot }}
 
-        <?php if (isset($label)): ?>
+        <?php if ($label): ?>
             <flux:label>{{ $label }}</flux:label>
         <?php endif; ?>
 
-        <?php if (isset($description)): ?>
+        <?php if ($description): ?>
             <flux:description>{{ $description }}</flux:description>
         <?php endif; ?>
 

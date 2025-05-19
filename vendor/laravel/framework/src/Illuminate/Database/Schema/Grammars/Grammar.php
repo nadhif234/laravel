@@ -169,7 +169,7 @@ abstract class Grammar extends BaseGrammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
-     * @return list<string>|string
+     * @return array|string
      */
     public function compileRenameColumn(Blueprint $blueprint, Fluent $command)
     {
@@ -185,7 +185,7 @@ abstract class Grammar extends BaseGrammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
-     * @return list<string>|string
+     * @return array|string
      *
      * @throws \RuntimeException
      */
@@ -427,8 +427,8 @@ abstract class Grammar extends BaseGrammar
      * Add a prefix to an array of values.
      *
      * @param  string  $prefix
-     * @param  array<string>  $values
-     * @return array<string>
+     * @param  array  $values
+     * @return array
      */
     public function prefixArray($prefix, array $values)
     {

@@ -9,7 +9,7 @@ use Pest\Arch\Options\TestCaseOptions;
 /**
  * @internal
  */
-trait Architectable // @phpstan-ignore-line
+trait Architectable
 {
     /**
      * The options to use when generating the architecture.

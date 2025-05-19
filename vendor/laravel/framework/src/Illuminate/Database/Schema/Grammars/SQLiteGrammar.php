@@ -319,7 +319,7 @@ class SQLiteGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
-     * @return list<string>|string
+     * @return array|string
      */
     public function compileAlter(Blueprint $blueprint, Fluent $command)
     {
@@ -370,7 +370,13 @@ class SQLiteGrammar extends Grammar
         ], $indexes, [$foreignKeyConstraintsEnabled ? $this->compileEnableForeignKeyConstraints() : null]));
     }
 
-    /** @inheritDoc */
+    /**
+     * Compile a change column command into a series of SQL statements.
+     *
+     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
+     * @param  \Illuminate\Support\Fluent  $command
+     * @return array|string
+     */
     public function compileChange(Blueprint $blueprint, Fluent $command)
     {
         // Handled on table alteration...
@@ -520,7 +526,7 @@ class SQLiteGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
-     * @return list<string>|null
+     * @return array|null
      */
     public function compileDropColumn(Blueprint $blueprint, Fluent $command)
     {

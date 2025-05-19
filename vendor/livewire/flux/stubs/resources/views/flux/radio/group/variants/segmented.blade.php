@@ -1,18 +1,10 @@
 @props([
-    'name' => null,
+    'name' => $attributes->whereStartsWith('wire:model')->first(),
     'variant' => null,
     'size' => null,
 ])
 
 @php
-// We only want to show the name attribute on the checkbox if it has been set
-// manually, but not if it has been set from the wire:model attribute...
-$showName = isset($name);
-
-if (! isset($name)) {
-    $name = $attributes->whereStartsWith('wire:model')->first();
-}
-
 $classes = Flux::classes()
     ->add('block flex p-1')
     ->add('rounded-lg bg-zinc-800/5 dark:bg-white/10')
@@ -22,7 +14,7 @@ $classes = Flux::classes()
 @endphp
 
 <flux:with-field :$attributes>
-    <ui-radio-group {{ $attributes->class($classes) }} @if($showName) name="{{ $name }}" @endif data-flux-radio-group-segmented>
+    <ui-radio-group {{ $attributes->class($classes) }} data-flux-radio-group-segmented>
         {{ $slot }}
     </ui-radio-group>
 </flux:with-field>

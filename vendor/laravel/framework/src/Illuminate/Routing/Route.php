@@ -170,6 +170,7 @@ class Route
      * @param  array|string  $methods
      * @param  string  $uri
      * @param  \Closure|array  $action
+     * @return void
      */
     public function __construct($methods, $uri, $action)
     {
@@ -271,8 +272,6 @@ class Route
      * Get the controller instance for the route.
      *
      * @return mixed
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function getController()
     {
@@ -1276,8 +1275,6 @@ class Route
      * Get the dispatcher for the route's controller.
      *
      * @return \Illuminate\Routing\Contracts\ControllerDispatcher
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function controllerDispatcher()
     {
@@ -1325,9 +1322,9 @@ class Route
     /**
      * Get the optional parameter names for the route.
      *
-     * @return array<string, null>
+     * @return array
      */
-    public function getOptionalParameterNames()
+    protected function getOptionalParameterNames()
     {
         preg_match_all('/\{(\w+?)\?\}/', $this->uri(), $matches);
 

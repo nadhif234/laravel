@@ -15,7 +15,7 @@ if (! function_exists('arch')) {
      * argument is the test description; the second argument
      * is a closure that contains the test expectations.
      */
-    function arch(?string $description = null, ?Closure $closure = null): TestCall
+    function arch(?string $description = null, ?Closure $closure = null): TestCall // @phpstan-ignore-line
     {
         $test = test(...func_get_args()); // @phpstan-ignore-line
 
